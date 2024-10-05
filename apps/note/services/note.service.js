@@ -1,12 +1,11 @@
-import { loadFromStorage, saveToStorage } from '../services/storage.js'
+import { loadFromStorage, saveToStorage , makeId } from './utils.service.js'
 import { storageService } from './async-storage.service.js'
 
 console.log('note service');
 
 
-const NOTE_KEY = 'noteDB'
+const NOTE_KEY = 'noteDBN'
 _createNotes()
-query()
 
 
 export const noteService = {
@@ -27,8 +26,8 @@ function _createNotes(){
 
     if (!notes || !notes.length) {
         notes = [
-            _createNote('text', 'write something'),
-            _createNote('text', 'write something')
+            _createNote('text', 'write something' , '1'),
+            _createNote('text', 'write something' , '2')
         ]
         
         saveToStorage(NOTE_KEY, notes)
@@ -39,7 +38,8 @@ function _createNotes(){
 function _createNote(type , value){
     return {
         type,
-        value
+        value,
+        id : makeId()
     }
 }
 

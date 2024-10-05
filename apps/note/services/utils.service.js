@@ -10,16 +10,16 @@ export const utilService = {
     saveToStorage
 }
 
-function saveToStorage(key, val) {
-    localStorage.setItem(key, JSON.stringify(val))
+export function saveToStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value))
 }
 
-function loadFromStorage(key) {
-    const val = localStorage.getItem(key)
-    return JSON.parse(val)
+export function loadFromStorage(key) {
+    const data = localStorage.getItem(key)
+    return (data) ? JSON.parse(data) : undefined
 }
 
-function makeId(length = 6) {
+export function makeId(length = 6) {
     var txt = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 
