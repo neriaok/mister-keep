@@ -4,14 +4,12 @@ export function NoteList({notes}) {
     console.log('noteslist',notes);
     
     return (
-        <ul className="notes-list">
+        <main className="notes-list" >
             {notes.map(note=>
-                <li key={note.id}>
-                  <section>
+                  <section  key={note.id}>
                     <Note note = {note}/>
                     </section>
-                </li>
             )}
-        </ul>
+        </main>
     )
 }
