@@ -1,6 +1,8 @@
 
 .text-note {
     background-color: #fffae5;
+    width: 100%;
+    height: 300px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
@@ -20,7 +22,6 @@
 .text-note textarea {
     background-color: transparent;
     width: 100%;
-    min-height: 200px;
     border: none;
     font-size: 18px;
     padding: 10px;
@@ -38,4 +39,8 @@
 
 .text-note textarea::placeholder {
     color: #aaa; 
+  }
+
+  .main-textarea{
+    height: 200px;
   }

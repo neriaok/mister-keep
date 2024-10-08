@@ -1,6 +1,10 @@
+import { noteService } from "../services/note.service.js"
 
-export function HeaderInput() {
+export function HeaderInput({setNotes , setTitle}) {
 
+  function handelTitleChange(ev){
+   setTitle(ev.target.value)
+  }
 
     function onAddNote() {
         var note = {
@@ -22,7 +26,7 @@ export function HeaderInput() {
 
     return (
         <section className ="header-input">
-            <input type="text" placeholder ="Title" className="title-input"/>
+            <input onChange = {handelTitleChange} type="text" placeholder ="Title" className="title-input"/>
             <input type="text" placeholder ="Take a note..." className="take-note-input"/>
             <button onClick={onAddNote} className="header-input-btn">add note</button>
         </section>

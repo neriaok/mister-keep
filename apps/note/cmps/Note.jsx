@@ -1,13 +1,18 @@
 import { noteService } from "../services/note.service.js"
 
-export function Note({ note }) {
+export function Note({ note, title , setTitle }) {
     console.log(note);
 
+    function handelTitleChange(ev){
+        setTitle(ev.target.value)
+       }
 
+    var txt = title
     if (note.type == 'text') {
         return (
             <div className="text-note">
-                <textarea placeholder="write something.." name="txt" id=""></textarea>
+                <textarea value={txt} onChange = {handelTitleChange} placeholder="Title" name="txt"></textarea>
+                <textarea placeholder="write something.." name="txt" className='main-textarea' ></textarea>
             </div>
         )
     }

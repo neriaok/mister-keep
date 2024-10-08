@@ -9,6 +9,8 @@ import { noteService } from "../services/note.service.js"
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
+    const [title, setTitle] = useState('txt')
+    
 
 
     useEffect(() => {
@@ -44,8 +46,8 @@ export function NoteIndex() {
     return (
 
         <main>
-            <HeaderInput />
-            <NoteList notes={notes} />
+            <HeaderInput  setNotes={setNotes} setTitle = {setTitle} />
+            <NoteList  notes={notes} title = {title} setTitle = {setTitle}/>
         </main>
     )
 }
