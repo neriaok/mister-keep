@@ -1,0 +1,11 @@
+
+.video-upload{
+    display: none;
+
+}
+.video-preview {
+    display: none; 
+    height: 300px;
+    width: 200px;
+    border-radius: 100px ;
+}

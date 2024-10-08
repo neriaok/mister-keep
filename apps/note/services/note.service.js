@@ -1,4 +1,4 @@
-import { loadFromStorage, saveToStorage , makeId } from './utils.service.js'
+import { loadFromStorage, saveToStorage, makeId } from './utils.service.js'
 import { storageService } from './async-storage.service.js'
 
 console.log('note service');
@@ -9,9 +9,12 @@ _createNotes()
 
 
 export const noteService = {
-   query,
-   createNote,
-   save,
+    query,
+    createNote,
+    save,
+    uploadImg,
+    uploadVideo,
+    uploadSong,
 }
 
 function query() {
@@ -22,27 +25,28 @@ function query() {
         })
 }
 
-function _createNotes(){
+function _createNotes() {
     let notes = loadFromStorage(NOTE_KEY)
     console.log('notes');
 
     if (!notes || !notes.length) {
         notes = [
-            createNote('text', 'write something' ),
-            createNote('text', 'write something' ),
-            createNote('img', 'upload' )
+            createNote('text', 'write something'),
+            createNote('video', 'upload'),
+            createNote('img', 'upload'),
+            createNote('song', 'upload')
         ]
-        
+
         saveToStorage(NOTE_KEY, notes)
     }
 }
 
 
-function createNote(type , value){
+function createNote(type, value) {
     return {
         type,
         value,
-        id : makeId()
+        id: makeId()
     }
 }
 
@@ -58,4 +62,44 @@ function save(note) {
     }
 }
 
-const 
+function uploadImg() {
+    console.log('upload');
+    const upload = document.querySelector(".upload-container.img")
+    console.log(upload);
+
+    const input = document.querySelector(".img-upload")
+    const reader = new FileReader();
+    console.log(reader);
+
+    reader.readAsDataURL(input.files[0]);
+    reader.onload = () => {
+        upload.style.backgroundImage = `url(${reader.result})`
+    }
+
+
+}
+
+function uploadVideo(event) {
+    const input = event.target;
+    const file = input.files[0];
+    const videoPreview = document.querySelector(".video-preview");
+
+    if (file) {
+        const videoURL = URL.createObjectURL(file); // Create a local URL for the uploaded video
+        videoPreview.src = videoURL; // Set the video element's source to the uploaded video
+        videoPreview.style.display = 'block'; // Ensure the video element is visible
+    }
+}
+
+
+function uploadSong(event) {
+    const input = event.target;
+    const file = input.files[0];
+    const audioPreview = document.querySelector("#audio-preview");
+
+    if (file) {
+        const audioURL = URL.createObjectURL(file); // Create a URL for the audio file
+        audioPreview.src = audioURL; // Set the audio element's source to the uploaded song
+        audioPreview.style.display = 'block'; // Show the audio player
+    }
+}

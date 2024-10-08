@@ -11,7 +11,7 @@
 
 /* Pages */
 @import './pages/home.css';
-@import '../css/apps/note/cmps/Note.css';
+@import '../css/apps/note/cmps/Note/Note.css';
 /* @import './apps/note/pages/NoteIndex.css'; */
 
 /* @import './apps/mail/pages/MailIndex.css'; */

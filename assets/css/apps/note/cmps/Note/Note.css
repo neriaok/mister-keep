@@ -1,0 +1,60 @@
+@import url(note-img.css);
+@import url(note-text.css);
+@import url(note-video.css);
+@import url(note-song.css);
+
+
+.notes-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.upload-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border: 2px double #3e10f4; 
+
+    min-height: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    max-width: 200px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 20px;
+    transition: border-color 0.3s; 
+    margin: 10px;
+
+    background-position: center;
+    background-size: cover;
+
+}
+
+.upload-container:hover {
+    border-color: #0056b3; 
+    
+}
+
+ .upload-label {
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: 1s; 
+    font-size: 24px;
+}
+
+.upload-label:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+
+} 
+
+.upload-container:hover .upload-label {
+    color: #0056b3;
+}
+
+
+
+
