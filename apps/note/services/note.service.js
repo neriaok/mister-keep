@@ -103,3 +103,4 @@ function uploadSong(event) {
         audioPreview.style.display = 'block'; // Show the audio player
     }
 }
+

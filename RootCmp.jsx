@@ -1,3 +1,4 @@
+const { useState } = React
 const { Route, Routes } = ReactRouterDOM
 const Router = ReactRouterDOM.HashRouter
 
@@ -9,10 +10,19 @@ import { NoteIndex } from "./apps/note/pages/NoteIndex.jsx"
 
 
 
+
 export function App() {
+
+const [logo, setLogo] = useState('WELCOME')
+
+
+function onSetLogo(logo){
+    setLogo(logo)
+}
+
     return <Router>
         <section className="app">
-            <AppHeader />
+            <AppHeader onSetLogo = {onSetLogo} logo ={logo}/>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

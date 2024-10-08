@@ -1,12 +1,23 @@
 header {
-    background: lightcyan;
+    background: rgb(225, 231, 231);
     border-bottom: 2px solid white;
+    color: #5f6368;
+    font-family: "Product Sans", Arial, sans-serif;
+
+
 }
 
 .app-header {
     display: flex;
     justify-content: space-between;
     padding: 20px 0;
+}
+
+h3{
+    font-size: 22px;
+    line-height: 24px;
+    padding-left: 8px;
+
 }
 
 nav a {
@@ -21,4 +32,5 @@ nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
+    
 }
