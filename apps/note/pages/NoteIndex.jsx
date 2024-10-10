@@ -10,7 +10,7 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [title, setTitle] = useState('txt')
-    
+
 
 
     useEffect(() => {
@@ -41,13 +41,21 @@ export function NoteIndex() {
 
     // var newNote = createNote('video', 'upload something')
 
-    if (!notes || !notes.length) return <h1>loading...</h1>
+    if (!notes || !notes.length) {
+        return (
+            <main>
+                <HeaderInput setNotes={setNotes} setTitle={setTitle} />
+                <h3>Notes you add appear here</h3>
+            </main>
+
+        )
+    }
 
     return (
 
         <main>
-            <HeaderInput  setNotes={setNotes} setTitle = {setTitle} />
-            <NoteList  notes={notes} title = {title} setTitle = {setTitle}/>
+            <HeaderInput setNotes={setNotes} setTitle={setTitle} />
+            <NoteList notes={notes} title={title} setTitle={setTitle} />
         </main>
     )
 }

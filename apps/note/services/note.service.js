@@ -30,12 +30,7 @@ function _createNotes() {
     console.log('notes');
 
     if (!notes || !notes.length) {
-        notes = [
-            createNote('text', 'write something'),
-            createNote('video', 'upload'),
-            createNote('img', 'upload'),
-            createNote('song', 'upload')
-        ]
+        notes = []
 
         saveToStorage(NOTE_KEY, notes)
     }

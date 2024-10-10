@@ -1,14 +1,22 @@
+const { useState } = React
+
 import { noteService } from "../services/note.service.js"
 
-export function HeaderInput({setNotes , setTitle}) {
+export function HeaderInput({ setNotes, setTitle }) {
 
-  function handelTitleChange(ev){
-   setTitle(ev.target.value)
-  }
+    const [inputClicked, setInputClicked] = useState(null)
 
-    function onAddNote() {
+    function onSetInputClicked(boolean) {
+        setInputClicked(boolean)
+    }
+
+    function handelTitleChange(ev) {
+        setTitle(ev.target.value)
+    }
+
+    function onAddNote(type) {
         var note = {
-            type: 'text',
+            type: type,
             value: 'upload'
         }
 
@@ -25,10 +33,22 @@ export function HeaderInput({setNotes , setTitle}) {
     }
 
     return (
-        <section className ="header-input">
-            <input onChange = {handelTitleChange} type="text" placeholder ="Title" className="title-input"/>
-            <input type="text" placeholder ="Take a note..." className="take-note-input"/>
-            <button onClick={onAddNote} className="header-input-btn">add note</button>
+
+        <section className="header-input">
+            {!inputClicked
+                ? <input onClick = {() => onSetInputClicked(true)} onChange={handelTitleChange} type="text" placeholder="Take a note..." className="title-input" />
+                : <React.Fragment>
+                    <input onChange={handelTitleChange} type="text" placeholder="Title" className="title-input" />
+                    <input type="text" placeholder="Take a note..." className="take-note-input" />
+                    <div className="btn-container">
+                        <button onClick={() => onAddNote('video')} className="header-input-btn">🎬</button>
+                        <button onClick={() => onAddNote('text')} className="header-input-btn">🖍</button>
+                        <button onClick={() => onAddNote('song')} className="header-input-btn">🎼</button>
+                        <button onClick={() => onAddNote('img')} className="header-input-btn">📷</button>
+                        <div><button onClick = {() => onSetInputClicked(false)} >close</button></div>
+                    </div>
+              </React.Fragment>
+}
         </section>
     )
 }
