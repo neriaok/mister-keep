@@ -18,6 +18,7 @@
 /* Cmps */
 @import '../css/apps/note/cmps/Note/Note.css';
 @import '../css/apps/note/cmps/HeaderInput.css';
+@import './apps/note/cmps/NoteList.css';
 
 @import './cmps/UserMsg.css';
 @import './cmps/AppHeader.css';

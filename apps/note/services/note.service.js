@@ -3,15 +3,16 @@ import { storageService } from './async-storage.service.js'
 
 console.log('note service');
 
-localStorage.clear()
+// localStorage.clear()
 const NOTE_KEY = 'noteDB'
 _createNotes()
 
 
 export const noteService = {
     query,
-    createNote,
+    _createNote,
     save,
+    remove,
     uploadImg,
     uploadVideo,
     uploadSong,
@@ -37,7 +38,7 @@ function _createNotes() {
 }
 
 
-function createNote(type, value) {
+function _createNote(type, value) {
     return {
         type,
         value,

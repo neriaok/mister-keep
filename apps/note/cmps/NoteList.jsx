@@ -1,13 +1,14 @@
 import { Note } from './Note.jsx'
 
-export function NoteList({notes , title , setTitle}) {
+export function NoteList({setNotes ,notes , title , content , setTitle , setContent , onRemoveNote}) {
     console.log('noteslist',notes);
     
     return (
         <main className="notes-list" >
             {notes.map(note=>
                   <section  key={note.id}>
-                    <Note  note = {note} title = {title} setTitle = {setTitle}/>
+                    <Note setNotes={setNotes} note = {note} title = {title} content={content} setTitle = {setTitle} setContent={setContent}/>
+                    <button onClick={() => onRemoveNote(note.id)}>Remove</button>
                     </section>
             )}
         </main>

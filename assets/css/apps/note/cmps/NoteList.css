@@ -1,1 +1,12 @@
- /* note list */
+.notes-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+@media screen and (max-width: 558px) {
+    .notes-list {
+        flex-direction: column;
+    }
+}

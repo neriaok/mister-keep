@@ -9,7 +9,9 @@ import { noteService } from "../services/note.service.js"
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
-    const [title, setTitle] = useState('txt')
+    const [title, setTitle] = useState('Title')
+    const [content, setContent] = useState('Content')
+
 
 
 
@@ -28,24 +30,25 @@ export function NoteIndex() {
             })
     }
 
-    // function onRemoveNote(noteId) {
-    //     noteService.remove(noteId)
-    //         .then(() => {
-    //             setNotes(notes => notes.filter(note => note.id !== noteId))
-    //         })
-    //         .catch(err => {
-    //             console.log('Problems removing note:', err)
-    //         })
-    // }
+    function onRemoveNote(noteId) {
+        noteService.remove(noteId)
+            .then(() => {
+                setNotes(notes => notes.filter(note => note.id !== noteId))
+            })
+            .catch(err => {
+                console.log('Problems removing note:', err)
+            })
+    }
 
 
-    // var newNote = createNote('video', 'upload something')
 
     if (!notes || !notes.length) {
         return (
             <main>
-                <HeaderInput setNotes={setNotes} setTitle={setTitle} />
-                <h3>Notes you add appear here</h3>
+                <HeaderInput setNotes={setNotes} setTitle={setTitle} setContent={setContent} title = {title} content={content}/>
+                <div className = "msg-container">
+                    <h3>Notes you add appear here</h3>
+                </div>
             </main>
 
         )
@@ -53,9 +56,9 @@ export function NoteIndex() {
 
     return (
 
-        <main>
-            <HeaderInput setNotes={setNotes} setTitle={setTitle} />
-            <NoteList notes={notes} title={title} setTitle={setTitle} />
+        <main className = "main-container">
+            <HeaderInput setNotes={setNotes} setTitle={setTitle} setContent={setContent} title = {title} content={content} />
+            <NoteList setNotes={setNotes} notes={notes} title={title} content={content} setTitle={setTitle} setContent={setContent} onRemoveNote = {onRemoveNote} />
         </main>
     )
 }

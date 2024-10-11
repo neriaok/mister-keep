@@ -4,8 +4,8 @@
 
 }
 .video-preview {
-    display: none; 
-    height: 300px;
-    width: 200px;
-    border-radius: 100px ;
+    height: 200px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 10px;
 }

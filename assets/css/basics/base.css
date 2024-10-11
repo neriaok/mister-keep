@@ -11,6 +11,14 @@ body {
     padding: 0;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f9;
+    height: 100vh;
+}
+
 
 h1,
 h2,
@@ -31,3 +39,16 @@ img {
     width: 100%;
     object-fit: cover;
 }
+
+input{
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none;
+    color: #333;
+    font-family: 'Caveat', cursive;
+    outline: none;
+ }

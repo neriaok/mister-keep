@@ -4,13 +4,6 @@
 @import url(note-song.css);
 
 
-.notes-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 10px;
-}
-
 .upload-container {
     display: flex;
     align-items: center;
@@ -38,16 +31,16 @@
     
 }
 
- .upload-label {
-    color: white; 
+ label {
     padding: 10px 20px; 
     border-radius: 5px; 
+    width: 20px;
     cursor: pointer;
     transition: 1s; 
-    font-size: 24px;
+    font-size: 18px;
 }
 
-.upload-label:hover {
+label:hover {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 
 } 

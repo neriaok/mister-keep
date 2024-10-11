@@ -1,8 +1,9 @@
 const { useState } = React
 
 import { noteService } from "../services/note.service.js"
+import { makeId } from "../services/utils.service.js"
 
-export function HeaderInput({ setNotes, setTitle }) {
+export function HeaderInput({ setNotes, setTitle , setContent , title , content}) {
 
     const [inputClicked, setInputClicked] = useState(null)
 
@@ -14,12 +15,18 @@ export function HeaderInput({ setNotes, setTitle }) {
         setTitle(ev.target.value)
     }
 
-    function onAddNote(type) {
-        var note = {
-            type: type,
-            value: 'upload'
-        }
+    function handelContentChange(ev) {
+        setContent(ev.target.value)
+    }
 
+    function onAddNote(type) {
+            var note = {
+                type: type,
+                title: `${title}`,
+                content: `${content}`
+            }
+    
+      
         noteService.save(note)
             .then(() => {
                 console.log(note);
@@ -36,19 +43,32 @@ export function HeaderInput({ setNotes, setTitle }) {
 
         <section className="header-input">
             {!inputClicked
-                ? <input onClick = {() => onSetInputClicked(true)} onChange={handelTitleChange} type="text" placeholder="Take a note..." className="title-input" />
+                ? <input onClick={() => onSetInputClicked(true)} onChange={handelTitleChange} type="text" placeholder="Take a note..." className="first-title-input" />
                 : <React.Fragment>
                     <input onChange={handelTitleChange} type="text" placeholder="Title" className="title-input" />
-                    <input type="text" placeholder="Take a note..." className="take-note-input" />
-                    <div className="btn-container">
-                        <button onClick={() => onAddNote('video')} className="header-input-btn">🎬</button>
-                        <button onClick={() => onAddNote('text')} className="header-input-btn">🖍</button>
-                        <button onClick={() => onAddNote('song')} className="header-input-btn">🎼</button>
-                        <button onClick={() => onAddNote('img')} className="header-input-btn">📷</button>
-                        <div><button onClick = {() => onSetInputClicked(false)} >close</button></div>
+                    <label className="catch-note-label">📌</label>
+
+                    <input onChange={handelContentChange}  type="text" placeholder="Take a note..." className="take-note-input" />
+
+                    <div className="lables-container">
+                        <input onChange={noteService.uploadVideo} id="video-upload" className="video-upload" type="file" accept="video/*" />
+                        <label htmlFor="video-upload" onClick={() => onAddNote('video')} className="upload-label">🎬</label>
+
+                        <label onClick={() => onAddNote('text')} className="header-input-btn">🖍</label>
+
+                        <input onChange={noteService.uploadSong} id="audio-upload" className="audio-upload" type="file" accept="audio/*" />
+                        <label htmlFor="audio-upload" onClick={() => onAddNote('song')} className="upload-label">🎼</label>
+
+                        <input onChange={noteService.uploadImg} id="file-upload" className="img-upload" type="file" accept="image/*" />
+                        <label htmlFor="file-upload" onClick={() => onAddNote('img')} className="upload-label img ">📷</label>
+
                     </div>
-              </React.Fragment>
-}
+
+                    <button onClick={() => onSetInputClicked(false)} >close</button>
+
+
+                </React.Fragment>
+            }
         </section>
     )
 }
