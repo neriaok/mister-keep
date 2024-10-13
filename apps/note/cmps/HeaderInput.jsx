@@ -3,7 +3,7 @@ const { useState } = React
 import { noteService } from "../services/note.service.js"
 import { makeId } from "../services/utils.service.js"
 
-export function HeaderInput({ setNotes, setTitle , setContent , title , content}) {
+export function HeaderInput({ setNotes, setTitle, setContent, title, content }) {
 
     const [inputClicked, setInputClicked] = useState(null)
 
@@ -20,13 +20,25 @@ export function HeaderInput({ setNotes, setTitle , setContent , title , content}
     }
 
     function onAddNote(type) {
+        if (type === 'img') {
+            const img = localStorage.getItem('uploadedImg'); // Retrieve saved image
+
             var note = {
-                type: type,
-                title: `${title}`,
-                content: `${content}`
-            }
-    
-      
+                type,
+                content: img || 'No image uploaded.', // Use the uploaded image or fallback
+            };
+            
+
+        } else{
+            var note = {
+            type: type,
+            title: `${title}`,
+            content: `${content}`
+        }
+ 
+        }
+       
+
         noteService.save(note)
             .then(() => {
                 console.log(note);
@@ -48,7 +60,7 @@ export function HeaderInput({ setNotes, setTitle , setContent , title , content}
                     <input onChange={handelTitleChange} type="text" placeholder="Title" className="title-input" />
                     <label className="catch-note-label">📌</label>
 
-                    <input onChange={handelContentChange}  type="text" placeholder="Take a note..." className="take-note-input" />
+                    <input onChange={handelContentChange} type="text" placeholder="Take a note..." className="take-note-input" />
 
                     <div className="lables-container">
                         <input onChange={noteService.uploadVideo} id="video-upload" className="video-upload" type="file" accept="video/*" />
@@ -60,11 +72,11 @@ export function HeaderInput({ setNotes, setTitle , setContent , title , content}
                         <label htmlFor="audio-upload" onClick={() => onAddNote('song')} className="upload-label">🎼</label>
 
                         <input onChange={noteService.uploadImg} id="file-upload" className="img-upload" type="file" accept="image/*" />
-                        <label htmlFor="file-upload" onClick={() => onAddNote('img')} className="upload-label img ">📷</label>
+                        <label htmlFor="file-upload" onClick={() => onAddNote('img')}  className="upload-label img ">📷</label>
 
                     </div>
 
-                    <button onClick={() => onSetInputClicked(false)} >close</button>
+                    <label onClick={() => onSetInputClicked(false)} className = "close-btn" >close</label>
 
 
                 </React.Fragment>

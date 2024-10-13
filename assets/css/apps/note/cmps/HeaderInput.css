@@ -14,11 +14,21 @@
     position: relative;
 }
 
-button{
+.close-btn{
     width: 50px;
     position: absolute;
-    bottom: 10%;
-    right: 3%;
+    font-size:medium;
+    font-family:'Caveat', cursive;
+    bottom: 7%;
+    right: 0;
+}
+
+.remove-btn{
+    border: none;
+    width: 50px;
+    font-size:smaller;
+    font-family:'Caveat', cursive;  
+    cursor: pointer;
 }
 
 .catch-note-label{

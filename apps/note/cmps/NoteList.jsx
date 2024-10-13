@@ -7,8 +7,7 @@ export function NoteList({setNotes ,notes , title , content , setTitle , setCont
         <main className="notes-list" >
             {notes.map(note=>
                   <section  key={note.id}>
-                    <Note setNotes={setNotes} note = {note} title = {title} content={content} setTitle = {setTitle} setContent={setContent}/>
-                    <button onClick={() => onRemoveNote(note.id)}>Remove</button>
+                    <Note setNotes={setNotes} note = {note} title = {title} content={content} setTitle = {setTitle} setContent={setContent} onRemoveNote={onRemoveNote}/>
                     </section>
             )}
         </main>

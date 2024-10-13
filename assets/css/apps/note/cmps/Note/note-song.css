@@ -3,5 +3,6 @@
 }
 
 .audio-preview {
-    object-fit: cove
+    object-fit: cover;
+    width: 100%;
 }

@@ -68,12 +68,22 @@ function uploadImg() {
     console.log(reader);
 
     reader.readAsDataURL(input.files[0]);
-    reader.onload = () => {
-        upload.style.backgroundImage = `url(${reader.result})`
+    
+        
+        reader.onload = () => {
+            const base64Img = reader.result;
+    
+            localStorage.setItem('uploadedImg', base64Img);
+    
+            console.log('Image uploaded and saved to local storage!');
+        };
+    
+        reader.onerror = (err) => console.error('Image upload failed:', err);
     }
+    
 
 
-}
+
 
 function uploadVideo(event) {
     const input = event.target;

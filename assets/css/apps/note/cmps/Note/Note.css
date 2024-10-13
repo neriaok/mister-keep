@@ -5,9 +5,9 @@
 
 
 .upload-container {
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     background-color: #f9f9f9;
     border: 2px double #3e10f4; 
 

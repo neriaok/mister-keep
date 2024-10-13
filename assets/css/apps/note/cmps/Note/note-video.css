@@ -5,7 +5,7 @@
 }
 .video-preview {
     height: 200px;
-    width: 400px;
+    width: 100%;
     object-fit: cover;
     border-radius: 10px;
 }

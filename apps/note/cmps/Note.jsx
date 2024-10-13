@@ -3,7 +3,7 @@ const { useEffect, useState } = React
 import { noteService } from "../services/note.service.js"
 import { saveToStorage } from "../services/utils.service.js";
 
-export function Note({ setNotes, note, title , content, setTitle , setContent }) {
+export function Note({ setNotes, note, title , content, setTitle , setContent , onRemoveNote }) {
     console.log(note);
 
     const [text, setText] = useState('txt')
@@ -32,13 +32,15 @@ export function Note({ setNotes, note, title , content, setTitle , setContent })
             <div className="text-note">
                 <textarea value={note.title} onChange = {handelTitleChange} placeholder="Title" name="txt"></textarea>
                 <textarea value={note.content} onChange = {handelContentChange} placeholder="write something.." name="txt" className='main-textarea' ></textarea>
+                <button onClick={() => onRemoveNote(note.id)} className = "remove-btn">Remove</button>
             </div>
         )
     }
     if (note.type == 'img') {
         return (
-            <div className="upload-container img">
-                
+            <div className="upload-container img" >
+                <img src={note.content} alt="Uploaded Note" style={{ maxWidth: '100%' }} />
+                <button onClick={() => onRemoveNote(note.id)} className = "remove-btn">Remove</button>
             </div>
 
         )
@@ -48,6 +50,7 @@ export function Note({ setNotes, note, title , content, setTitle , setContent })
         return (
             <div className="upload-container">
                 <video id="video-preview" className="video-preview" controls></video>
+                <button onClick={() => onRemoveNote(note.id)} className = "remove-btn">Remove</button>
             </div>
 
         )
@@ -57,6 +60,10 @@ export function Note({ setNotes, note, title , content, setTitle , setContent })
         return (
             <div className="upload-container">
                 <audio id="audio-preview" className="audio-preview" controls></audio>
+                <div>
+                <button onClick={() => onRemoveNote(note.id)} className = "remove-btn">Remove</button>
+                
+                </div>
             </div>
 
 
