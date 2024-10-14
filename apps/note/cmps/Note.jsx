@@ -49,7 +49,7 @@ export function Note({ setNotes, note, title , content, setTitle , setContent , 
     if (note.type == 'video') {
         return (
             <div className="upload-container">
-                <video id="video-preview" className="video-preview" controls></video>
+                <video src={note.content}  id="video-preview" className="video-preview" controls></video>
                 <button onClick={() => onRemoveNote(note.id)} className = "remove-btn">Remove</button>
             </div>
 

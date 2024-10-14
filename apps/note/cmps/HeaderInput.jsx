@@ -27,6 +27,14 @@ export function HeaderInput({ setNotes, setTitle, setContent, title, content }) 
                 type,
                 content: img || 'No image uploaded.', // Use the uploaded image or fallback
             };
+        }
+            if (type === 'video') {
+                const video = localStorage.getItem('uploadedVideo'); // Retrieve saved image
+    
+                var note = {
+                    type,
+                    content: video || 'No video uploaded.', // Use the uploaded image or fallback
+                };
             
 
         } else{

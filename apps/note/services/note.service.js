@@ -92,10 +92,14 @@ function uploadVideo(event) {
 
     if (file) {
         const videoURL = URL.createObjectURL(file); // Create a local URL for the uploaded video
-        videoPreview.src = videoURL; // Set the video element's source to the uploaded video
-        videoPreview.style.display = 'block'; // Ensure the video element is visible
+        localStorage.setItem('uploadedVideo', videoURL);
+    
+        console.log('video uploaded and saved to local storage!');
+    };
+
+    reader.onerror = (err) => console.error('video upload failed:', err);
     }
-}
+
 
 
 function uploadSong(event) {
